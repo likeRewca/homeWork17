@@ -1,7 +1,7 @@
 package com.HomeWorkP2.Hillel;
 
 import java.time.LocalDate;
-import java.util.Arrays;
+import java.util.*;
 
 public class Person {
 
@@ -52,20 +52,13 @@ public class Person {
         this.shortFio = getShortFio(firstName, lastName, middleName);
     }
 
-    private String getFio (String firstName, String lastName, String middleName){
+    public String getFio (String firstName, String lastName, String middleName){
         return firstName +" "+ lastName +" "+ middleName;
     }
-
-    private String getShortFio (String firstName, String lastName, String middleName){
+    public String getShortFio (String firstName, String lastName, String middleName){
         return lastName + " "+ firstName.charAt(0) + ". " + middleName.charAt(0)+".";
     }
-    private void splitFio(String fio){
-        String[] arrayFio = fio.split(" ");
-        this.firstName = arrayFio[1];
-        this.lastName = arrayFio[0];
-        this.middleName = arrayFio[2];
-    }
-    private int getAge(String dateOfHB){
+    public int getAge(String dateOfHB){
         LocalDate date = LocalDate.now();
         int yearsOld;
         int nowYear= date.getYear();
@@ -83,5 +76,15 @@ public class Person {
         }
         return yearsOld;
     }
+    public void splitFio(String fio){
+        String[] arrayFio = fio.split(" ");
+        this.firstName = arrayFio[1];
+        this.lastName = arrayFio[0];
+        this.middleName = arrayFio[2];
+    }
 
+    @Override
+    public String toString() {
+        return "\nФИО ='" + firstName + " " + middleName + " " + lastName ;
+    }
 }

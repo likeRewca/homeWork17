@@ -1,31 +1,36 @@
 package com.HomeWorkP2.Hillel;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
         Person person = new Person("Юрий", "Горб", "Андреевич", "1.10.1994");
-        Person person1 = new Person("Ярослав", "Клемешев", "Николаевич");
+        Person person1 = new Person("Артур", "Клемешев", "Николаевич");
         Person person2 = new Person("Горб Юрий Андреевич");
-        System.out.println(person.firstName);
-        System.out.println(person.lastName);
-        System.out.println(person.middleName);
-        System.out.println(person.fio);
-        System.out.println(person.age);
-        System.out.println(person.shortFio);
-        System.out.println("==================");
-        System.out.println(person1.firstName);
-        System.out.println(person1.lastName);
-        System.out.println(person1.middleName);
-        System.out.println(person1.fio);
-        System.out.println(person1.age);
-        System.out.println(person1.shortFio);
-        System.out.println("==================");
-        System.out.println(person2.firstName);
-        System.out.println(person2.lastName);
-        System.out.println(person2.middleName);
-        System.out.println(person2.fio);
-        System.out.println(person2.age);
-        System.out.println(person2.shortFio);
+        Person person3 = new Person("Юрий", "Горб", "Андреевич");
+        Person person4 = new Person("Никита", "Хрущев", "Леонидович");
+        Person person5 = new Person("Дмитрий", "Тяшкевич", "Юрьевич");
+        List<Person> arrayPerson = new ArrayList<>();
+        arrayPerson.add(person1);
+        arrayPerson.add(person3);
+        arrayPerson.add(person4);
+        arrayPerson.add(person5);
+        System.out.println("Before: " + arrayPerson
+                + "\n===========================");
+        getSortName(arrayPerson);
+        System.out.println("After: " + arrayPerson);
     }
 
+    private static void getSortName(List<Person> person) {
+        Collections.sort(person, new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.getFirstName().compareTo(o2.getFirstName());
+            }
+        });
+    }
 }

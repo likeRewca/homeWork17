@@ -1,15 +1,13 @@
 package com.HomeWorkP2.Hillel;
 
 import java.time.LocalDate;
-import java.util.*;
+
 
 public class Person {
 
     protected String firstName;
     protected String lastName;
     protected String middleName;
-    protected String fio;
-    protected String shortFio;
     protected int age;
 
     public String getFirstName() {
@@ -21,12 +19,6 @@ public class Person {
     public String getMiddleName() {
         return middleName;
     }
-    public String getFio() {
-        return fio;
-    }
-    public String getShortFio() {
-        return shortFio;
-    }
     public int getAge() {
         return age;
     }
@@ -35,27 +27,24 @@ public class Person {
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;
-        this.fio = getFio(firstName, lastName, middleName);
-        this.shortFio = getShortFio(firstName, lastName, middleName);
         this.age = getAge(date);
     }
     public Person (String firstName, String lastName, String middleName){
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;
-        this.fio = getFio(firstName, lastName, middleName);
-        this.shortFio = getShortFio(firstName, lastName, middleName);
     }
     public Person (String fio){
-        splitFio(fio);
-        this.fio = fio;
-        this.shortFio = getShortFio(firstName, lastName, middleName);
+        String[] arrayFio = fio.split(" ");
+        this.firstName = arrayFio[1];
+        this.lastName = arrayFio[0];
+        this.middleName = arrayFio[2];
     }
 
-    public String getFio (String firstName, String lastName, String middleName){
+    public String getFio (){
         return firstName +" "+ lastName +" "+ middleName;
     }
-    public String getShortFio (String firstName, String lastName, String middleName){
+    public String getShortFio (){
         return lastName + " "+ firstName.charAt(0) + ". " + middleName.charAt(0)+".";
     }
     public int getAge(String dateOfHB){
@@ -76,15 +65,9 @@ public class Person {
         }
         return yearsOld;
     }
-    public void splitFio(String fio){
-        String[] arrayFio = fio.split(" ");
-        this.firstName = arrayFio[1];
-        this.lastName = arrayFio[0];
-        this.middleName = arrayFio[2];
-    }
 
     @Override
     public String toString() {
-        return "\nФИО ='" + firstName + " " + middleName + " " + lastName ;
+        return "\nФИО =" + firstName + " " + middleName + " " + lastName + "\nЛет" + age;
     }
 }

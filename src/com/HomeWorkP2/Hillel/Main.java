@@ -23,6 +23,8 @@ public class Main {
                 + "\n===========================");
         getSortName(arrayPerson);
         System.out.println("After: " + arrayPerson);
+        System.out.println(person4.getFio());
+
     }
 
     private static void getSortName(List<Person> person) {
